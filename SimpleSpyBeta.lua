@@ -1760,7 +1760,7 @@ local newindex = function(method,originalfunction,...)
 	return originalfunction(...)
 end
 
-local newnamecall = newcclosure(function(self, ...)
+local newnamecall = newcclosure(function(...)
 	local method = getnamecallmethod()
 	
 	local args = {...}
