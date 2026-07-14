@@ -1763,14 +1763,16 @@ end
 local newnamecall = newcclosure(function(self, ...)
 	local method = getnamecallmethod()
 	
+	local args = {...}
+	local self = args[1]
+
 	if self
 		and self:IsA("RemoteEvent")
 		and self.Name == "RemoteEvent"
 		and self.Parent == nil
 	then
-		return oldnamecall(self, ...)
-		-- or: return originalnamecall(self, ...)
-	end	
+		return originalnamecall(...)
+	end
 
 	if method and (method == "FireServer" or method == "fireServer" or method == "InvokeServer" or method == "invokeServer") then
 		if typeof(...) == 'Instance' then
