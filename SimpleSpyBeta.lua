@@ -1767,10 +1767,11 @@ local newnamecall = newcclosure(function(...)
 	local self = args[1]
 	
 	if self
+		and self:IsA("RemoteEvent")
 		and self.Name == "RemoteEvent"
 		and self.Parent == nil
 	then
-		return originalnamecall(...)
+		return orinalnamecall(self, ...)
 	end
 
 	if method and (method == "FireServer" or method == "fireServer" or method == "InvokeServer" or method == "invokeServer") then
