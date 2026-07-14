@@ -1765,7 +1765,11 @@ local newnamecall = newcclosure(function(self, ...)
 	
 	local args = {...}
 	local self = args[1]
-
+	
+	for i, v in ipairs(args) do
+		print(i, typeof(v), v)
+	end
+	
 	if self
 		and self:IsA("RemoteEvent")
 		and self.Name == "RemoteEvent"
